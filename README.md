@@ -180,7 +180,7 @@ print list
 ===================
 [1]
 ```
-remove(값)을 적으면 값에 해당하느 인덱스를 찾아 삭제합니다.
+remove(값)을 적으면 값에 해당하는 인덱스를 찾아 삭제합니다.
 ### 출력
 리스트의 값을 출력할 수 있습니다.
 ```
@@ -267,9 +267,14 @@ tellraw("대사", "선택인자", 스코어보드이름, 범위 연산)
 ```
 tellraw("점수를 확인하세요!", "@a", "health", 0..50) # execute as @a if score @a health matches 0..50 run tellraw @s [{"text":"점수를 확인하세요!"}]
 ```
+## say
+```
+say 할말
+```
+으로 마인크래프트 명령어의 say를 구현할 수 있습니다.
 ## random
 random이 내장 함수로 존재합니다.
-`random.int()` `random.float` 이 존재합니다.
+`random.int()` `random.float()` 이 존재합니다.
 ```
 random.int(1,100) # 1~100중 무작위
 random.float(1,2) # 1.0~2.0중 무작위
