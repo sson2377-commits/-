@@ -274,45 +274,56 @@ say 할말
 으로 마인크래프트 명령어의 say를 구현할 수 있습니다.
 ## random
 random이 내장 함수로 존재합니다.
-`random.int()` `random.float()` 이 존재합니다.
+`random.int()` `random.float()` `random.str()` 이 존재합니다.
 ```
 random.int(1,100) # 1~100중 무작위
 random.float(1,2) # 1.0~2.0중 무작위
+random.str("abc") # abc중 무작위
+random.str("a", "b", "c") #도 가능
 ```
-# 예시
+## try-except
+try-except를 사용하여 예외처리를 할 수 있습니다.
 ```
-score total_score
-
-rkc update_score(points):
-    if points > 0 :
-        score add total_score = points
-        tellraw("점수 +" + str(points) + "획득!", "@a", "total_score", ..1000)
-    end
+try:
+ say 1
+except ErrorType:
+ say 2
 end
-
-for i in 1 to 10 :
-    update_score(random.int(1, 100))
+```
+마지막에 end을 붙여야합니다.
+## throw
+throw는 의도적으로 오류를 일으키는 문법입니다.
+```
+throw "사용자 오류"
+```
+## set
+set 자료형을 추가됐습니다. 중복을 허용하지 않는 집합입니다.
+```
+let a = (item1, item2, ...)
+a.add(item)
+a.remove(item)
+a.has(item)
+a.size(item)
+```
+add는 값을 추가하고
+remove는 값을 제거하며
+has는 해당 값이 있는 지 확인하고
+size는 set 자료형의 크기를 계산합니다.
+## give
+마인크래프트의 give명령어를 추가하였습니다.
+```
+give("아이템 이름", "선택인자", "개수")
+```
+## execute
+마인크래프트 execute문인데 아직 추가되고있는 중입니다.
+```
+execute:
+ "key" = "value"
 end
-=================================================================================
-scoreboard objectives add total_score dummy
-scoreboard players add total_score total_score 100
-execute as @a if score total_score total_score matches ..1000 run tellraw @s [{'text':'점수 +100획득!'}]
-scoreboard players add total_score total_score 58
-execute as @a if score total_score total_score matches ..1000 run tellraw @s [{'text':'점수 +58획득!'}]
-scoreboard players add total_score total_score 56
-execute as @a if score total_score total_score matches ..1000 run tellraw @s [{'text':'점수 +56획득!'}]
-scoreboard players add total_score total_score 53
-execute as @a if score total_score total_score matches ..1000 run tellraw @s [{'text':'점수 +53획득!'}]
-scoreboard players add total_score total_score 48
-execute as @a if score total_score total_score matches ..1000 run tellraw @s [{'text':'점수 +48획득!'}]
-scoreboard players add total_score total_score 73
-execute as @a if score total_score total_score matches ..1000 run tellraw @s [{'text':'점수 +73획득!'}]
-scoreboard players add total_score total_score 57
-execute as @a if score total_score total_score matches ..1000 run tellraw @s [{'text':'점수 +57획득!'}]
-scoreboard players add total_score total_score 48
-execute as @a if score total_score total_score matches ..1000 run tellraw @s [{'text':'점수 +48획득!'}]
-scoreboard players add total_score total_score 91
-execute as @a if score total_score total_score matches ..1000 run tellraw @s [{'text':'점수 +91획득!'}]
-scoreboard players add total_score total_score 1
-execute as @a if score total_score total_score matches ..1000 run tellraw @s [{'text':'점수 +1획득!'}]
+==================
+execute:
+ "as" = "@a"
+ "at" = "@s"
+ "run" = tellraw(...)
+end
 ```
